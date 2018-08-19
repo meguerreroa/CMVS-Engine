@@ -1,4 +1,5 @@
 #include "FileLoader.h"
+#include "stdafx.h"
 
 FileLoader* FileLoader::m_Inst = NULL;
 

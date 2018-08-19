@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "detours.h"
+#include "stdafx.h"
 #include "amatsu_trial_chs.h"
 
 #pragma comment(lib,"detours.lib")
@@ -41,14 +42,14 @@ int NTAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 	if (!GetFullPathNameW(pszDllPath, ARRAYSIZE(szDllPath), szDllPath, &pszFilePart))
 	{
-		MessageBoxW(NULL, L"ÄÚ²¿´íÎó[0]", L"ÓÎÏ·Æô¶¯Ê§°Ü", MB_OK);
+		MessageBoxW(NULL, L"å†…éƒ¨é”™è¯¯[0]", L"æ¸¸æˆå¯åŠ¨å¤±è´¥", MB_OK);
 		return false;
 	}
 
 	HMODULE hDll = LoadLibraryEx(pszDllPath, NULL, DONT_RESOLVE_DLL_REFERENCES);
 	if (hDll == NULL)
 	{
-		MessageBoxW(NULL, L"ÎŞ·¨¼ÓÔØºº»¯ÎÄ¼ş", L"ÓÎÏ·Æô¶¯Ê§°Ü", MB_OK);
+		MessageBoxW(NULL, L"æ— æ³•åŠ è½½æ±‰åŒ–æ–‡ä»¶", L"æ¸¸æˆå¯åŠ¨å¤±è´¥", MB_OK);
 		return false;
 	}
 
@@ -60,7 +61,7 @@ int NTAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 
 	if (!ec.fHasOrdinal1)
 	{
-		MessageBoxW(NULL, L"ºº»¯DllÎÄ¼şÑéÖ¤Ê§°Ü", L"ÓÎÏ·Æô¶¯Ê§°Ü", MB_OK);
+		MessageBoxW(NULL, L"æ±‰åŒ–Dllæ–‡ä»¶éªŒè¯å¤±è´¥", L"æ¸¸æˆå¯åŠ¨å¤±è´¥", MB_OK);
 		return false;
 	}
 	//////////////////////////////////////////////////////////////////////////////////
@@ -92,7 +93,7 @@ int NTAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 		&si, &pi, mDllPath, NULL))
 	{
 		DWORD dwError = GetLastError();
-		MessageBoxW(NULL, L"ÎŞ·¨Æô¶¯ÓÎÏ·½ø³Ì", L"ÓÎÏ·Æô¶¯Ê§°Ü", MB_OK);
+		MessageBoxW(NULL, L"æ— æ³•å¯åŠ¨æ¸¸æˆè¿›ç¨‹", L"æ¸¸æˆå¯åŠ¨å¤±è´¥", MB_OK);
 		ExitProcess(-1);
 	}
 
@@ -103,7 +104,7 @@ int NTAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 	DWORD dwResult = 0;
 	if (!GetExitCodeProcess(pi.hProcess, &dwResult))
 	{
-		MessageBoxW(NULL, L"ÄÚ²¿´íÎó£¨ÓÎÏ·¿ÉÄÜ»áÕı³£ÔËĞĞ£©", L"ÓÎÏ·Æô¶¯Ê§°Ü", MB_OK);
+		MessageBoxW(NULL, L"å†…éƒ¨é”™è¯¯ï¼ˆæ¸¸æˆå¯èƒ½ä¼šæ­£å¸¸è¿è¡Œï¼‰", L"æ¸¸æˆå¯åŠ¨å¤±è´¥", MB_OK);
 		return -1;
 	}
 	return 0;
